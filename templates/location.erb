@@ -1,4 +1,4 @@
-<%
+<%-
 require 'net/http'
 require 'rexml/document'
 
@@ -9,5 +9,5 @@ version = REXML::XPath.first(doc, "/artifact-resolution/data/version").text
 redirect = "#{nexus}/artifact/maven/redirect?r=#{repo}&v=#{version}&g=#{group}&a=#{artifact}&e=#{extension}"
 redirectRes = Net::HTTP.get_response(URI.parse(redirect))
 
-%>
+-%>
 <%=URI.parse(redirectRes['location'])%>
