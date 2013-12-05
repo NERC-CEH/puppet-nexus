@@ -10,13 +10,9 @@ define nexus::artifact(
   $temp     = "/tmp/nexus"
   $webArtifact = template('nexus/location.erb')
 
-  Exec {
-    path => ['/usr/bin'],
-  }
-
   exec { 'obtain_artifact':
     command => "wget ${webArtifact} -O ${temp}",
-    require => Package['wget'],
+    path => ['/usr/bin'],
   }
 
   file { $location :
