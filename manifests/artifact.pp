@@ -8,10 +8,10 @@ define nexus::artifact(
   $extension = 'war'
 ) {
   $temp     = "/tmp/nexus"
-  $location = template('nexus/location.erb')
+  $webArtifact = template('nexus/location.erb')
 
   exec { 'obtain_artifact':
-    command => "wget ${location} -O ${temp}",
+    command => "wget ${webArtifact} -O ${temp}",
     require => Package['wget'],
   }
 
