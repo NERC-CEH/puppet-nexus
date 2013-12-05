@@ -2,11 +2,11 @@
 require 'net/http'
 require 'rexml/document'
 
-resolved = "#{nexus}/artifact/maven/resolve?r=#{repo}&v=#{v}&g=#{g}&a=#{a}&e=#{e}"
+resolved = "#{nexus}/artifact/maven/resolve?r=#{repo}&v=#{version}&g=#{group}&a=#{artifact}&e=#{extension}"
 xml_data = Net::HTTP.get(URI.parse(resolved))
 doc = REXML::Document.new(xml_data)
 version = REXML::XPath.first(doc, "/artifact-resolution/data/version").text
-redirect = "#{nexus}/artifact/maven/redirect?r=#{repo}&v=#{version}&g=#{g}&a=#{a}&e=#{e}"
+redirect = "#{nexus}/artifact/maven/redirect?r=#{repo}&v=#{version}&g=#{group}&a=#{artifact}&e=#{extension}"
 redirectRes = Net::HTTP.get_response(URI.parse(redirect))
 
 %>

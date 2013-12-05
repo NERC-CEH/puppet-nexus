@@ -1,6 +1,6 @@
 define nexus::artifact(
   $location = $title,
-  $nexus = 'http://mavenrepo.nerc-lancaster.ac.uk/nexus/service/local'
+  $nexus = 'http://mavenrepo.nerc-lancaster.ac.uk/nexus/service/local',
   $repo = 'releases',
   $group,
   $artifact,
@@ -16,7 +16,7 @@ define nexus::artifact(
   }
 
   file { $location :
-    source  => $temp
-    require => Exec['obtain_artifact']
+    source  => $temp,
+    require => Exec['obtain_artifact'],
   }
 }
