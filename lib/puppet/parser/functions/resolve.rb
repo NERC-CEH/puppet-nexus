@@ -1,8 +1,9 @@
 require 'net/http'
 require 'rexml/document'
 
-
 module Puppet::Parser::Functions
+  # Resolves the given gav + ext + repo parameters with a given nexus
+  # instance. Returns the location of the artifact and its sha1 value
   newfunction(:resolve, :type => :rvalue) do |args|
     #Read in the arguments list
     nexus,repo,group,artifact,version,extension = args

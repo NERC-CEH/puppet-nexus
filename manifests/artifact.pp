@@ -1,11 +1,20 @@
+################################################################################
+# Definition: nexus::artifact
+#
+# Use this resource to obtain an artifact from a nexus repository. You can 
+# use nexus version tags such as 'LATEST', to ensure that you get the latest
+# release of an artifact
+#
+################################################################################
 define nexus::artifact(
   $location = $title,
   $nexus = 'http://mavenrepo.nerc-lancaster.ac.uk/nexus/service/local',
   $repo = 'releases',
   $group,
   $artifact,
-  $version,
-  $extension = 'war'
+  $version = 'LATEST',
+  $extension = 'war',
+  $notify = undef
 ) {
   $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension)
   $temp = "/tmp/${webArtifact['sha1']}"
@@ -14,11 +23,17 @@ define nexus::artifact(
     command   => "wget ${webArtifact['location']} -O ${temp}",
     creates   => $temp,
     path      => ['/usr/bin'],
-    logoutput => true,
   }
 
   file { $location :
     source  => $temp,
     require => Exec['obtain_artifact'],
+  }
+
+  # If notify has been defined, then notify based on file
+  if $notify {
+    File[$location] {
+      notify => $notify,
+    }
   }
 }
