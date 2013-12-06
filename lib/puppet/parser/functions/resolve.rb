@@ -16,7 +16,7 @@ module Puppet::Parser::Functions
     redirectRes = Net::HTTP.get_response(URI.parse(redirect))
 
     return {
-      'location' => URI.parse(redirectRes['location'],
+      'location' => URI.parse(redirectRes['location']),
       'sha1'     => sha1
     }
   end
