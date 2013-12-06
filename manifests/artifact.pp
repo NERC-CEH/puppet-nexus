@@ -7,15 +7,16 @@ define nexus::artifact(
   $version,
   $extension = 'war'
 ) {
-  $temp     = "/tmp/nexus"
-  $webArtifact = template('nexus/location.erb')
+  $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension)
+  $temp = "/tmp/${webArtifact.sha1}"
 
   exec { 'obtain_artifact':
     command => "wget ${webArtifact} -O ${temp}",
+    creates => $temp
     path => ['/usr/bin'],
   }
 
-  file { $location :
+  file { $webArtifact.location :
     source  => $temp,
     require => Exec['obtain_artifact'],
   }
