@@ -12,11 +12,11 @@ define nexus::artifact(
 
   exec { 'obtain_artifact':
     command => "wget ${webArtifact} -O ${temp}",
-    creates => $temp
+    creates => $temp,
     path => ['/usr/bin'],
   }
 
-  file { $webArtifact.location :
+  file { $webArtifact['location'] :
     source  => $temp,
     require => Exec['obtain_artifact'],
   }
