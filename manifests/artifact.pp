@@ -13,8 +13,7 @@ define nexus::artifact(
   $group,
   $artifact,
   $version = 'LATEST',
-  $extension = 'war',
-  $notify = undef
+  $extension = 'war'
 ) {
   $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension)
   $temp = "/tmp/${webArtifact['sha1']}"
@@ -28,12 +27,5 @@ define nexus::artifact(
   file { $location :
     source  => $temp,
     require => Exec['obtain_artifact'],
-  }
-
-  # If notify has been defined, then notify based on file
-  if $notify {
-    File[$location] {
-      notify => $notify,
-    }
   }
 }
