@@ -8,7 +8,7 @@ define nexus::artifact(
   $extension = 'war'
 ) {
   $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension)
-  $temp = "/tmp/${webArtifact.sha1}"
+  $temp = "/tmp/${webArtifact['sha1']}"
 
   exec { 'obtain_artifact':
     command => "wget ${webArtifact} -O ${temp}",
