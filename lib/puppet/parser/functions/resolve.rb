@@ -10,11 +10,11 @@ module Puppet::Parser::Functions
 
     resolved = "#{nexus}/artifact/maven/resolve?r=#{repo}&v=#{version}&g=#{group}&a=#{artifact}&e=#{extension}"
     xml_data = Net::HTTP.get(URI.parse(resolved))
-    doc = REXML::Document.new(xml_data)
+    doc = REXML::Document.new(xml_data) #Parse the xml for the resolved artifact
     version = REXML::XPath.first(doc, "/artifact-resolution/data/version").text
     sha1 = REXML::XPath.first(doc, "/artifact-resolution/data/sha1").text
     redirect = "#{nexus}/artifact/maven/redirect?r=#{repo}&v=#{version}&g=#{group}&a=#{artifact}&e=#{extension}"
-    redirectRes = Net::HTTP.get_response(URI.parse(redirect))
+    redirectRes = Net::HTTP.get_response(URI.parse(redirect)) #get the real location of the artifact
 
     return {
       'location' => URI.parse(redirectRes['location']),
