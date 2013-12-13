@@ -9,7 +9,7 @@
 define nexus::artifact(
   $location = $title,
   $nexus = 'http://mavenrepo.nerc-lancaster.ac.uk/nexus/service/local',
-  $repo = 'public',
+  $repo = 'releases',
   $group,
   $artifact,
   $version = 'LATEST',
