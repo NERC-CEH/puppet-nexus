@@ -21,7 +21,7 @@ You can also obtain any arbitary maven artifact from a nexus instance
 
 Create a new nexus instance from an artifact hosted in the default nexus instance. See [params](manifest/params.pp)
     
-    include nexus
+    include nexus::server
 
 Obtain the latest maven artifact from nexus
 
