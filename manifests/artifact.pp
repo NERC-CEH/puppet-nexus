@@ -1,32 +1,38 @@
-#
-# Definition: nexus::artifact
+# == Define: nexus::artifact
 #
 # Use this resource to obtain an artifact from a nexus repository. You can 
 # use nexus version tags such as 'LATEST', to ensure that you get the latest
 # release of an artifact
 #
-# Authors:
+# === Parameters
+# [*group*]
+#   The $group parameter of the artifact
+# [*artifact*]
+#   The $artifact to obtain
+# [*location*]
+#   The $location to load the artifact to
+# [*version*]
+#   The $version of the artifact to obtain, defaults to LATEST
+# [*extension*]
+#   The $extension of the artifact to get
+# [*nexus*]
+#   The $nexus instance to obtain the artifact from
+# [*repo*]
+#   The $repo on the nexus instance to obtain the artifact from
+#
+# === Authors
+#
 #   Christopher Johnson - cjohn@ceh.ac.uk
 #
-# Parameters:
-# - The $location to load the artifact to
-# - The $nexus instance to obtain the artifact from
-# - The $repo on the nexus instance to obtain the artifact from
-# - The $group parameter of the artifact
-# - The $artifact to obtain
-# - The $version of the artifact to obtain, defaults to LATEST
-# - The $extension of the artifact to get
-#
 define nexus::artifact(
-  $location = $title,
-  $nexus = $nexus::params::nexus,
-  $repo = $nexus::params::repo,
   $group,
   $artifact,
-  $version = $nexus::params::version,
-  $extension = 'war'
+  $location   = $title,
+  $version    = 'LATEST',
+  $extension  = 'war',
+  $nexus      = 'http://mavenrepo.nerc-lancaster.ac.uk/nexus/service/local',
+  $repo       = 'public'
 ) {
-
   $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension)
   $temp = "/tmp/${webArtifact['sha1']}"
 
