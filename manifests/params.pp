@@ -12,7 +12,7 @@
 # - The default $version of artifacts to obtain 
 #
 class nexus::params {
-  $nexus = 'http://mavenrepo.nerc-lancaster.ac.uk/nexus/service/local',
-  $repo = 'public',
-  $version = 'LATEST',
+  $nexus = 'http://mavenrepo.nerc-lancaster.ac.uk/nexus/service/local'
+  $repo = 'public'
+  $version = 'LATEST'
 }

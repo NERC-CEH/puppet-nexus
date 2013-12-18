@@ -17,7 +17,8 @@ class nexus (
   $nexus = $nexus::params::nexus,
   $version = $nexus::params::version,
   $repo = $nexus::params::repo
-) {
+) inherits nexus::params {
+
   tomcat::instance { 'nexus' :
     http_port => $port
   }

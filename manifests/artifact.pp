@@ -20,12 +20,13 @@
 define nexus::artifact(
   $location = $title,
   $nexus = $nexus::params::nexus,
-  $repo = $nexus::params::repo
+  $repo = $nexus::params::repo,
   $group,
   $artifact,
   $version = $nexus::params::version,
   $extension = 'war'
 ) {
+
   $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension)
   $temp = "/tmp/${webArtifact['sha1']}"
 
