@@ -5,24 +5,18 @@
 # release of an artifact
 #
 # === Parameters
-# [*group*]
-#   The $group parameter of the artifact
-# [*artifact*]
-#   The $artifact to obtain
-# [*location*]
-#   The $location to load the artifact to
-# [*version*]
-#   The $version of the artifact to obtain, defaults to LATEST
-# [*extension*]
-#   The $extension of the artifact to get
-# [*nexus*]
-#   The $nexus instance to obtain the artifact from
-# [*repo*]
-#   The $repo on the nexus instance to obtain the artifact from
+#
+# [*group*] The $group parameter of the artifact
+# [*artifact*] The $artifact to obtain
+# [*location*] The $location to load the artifact to
+# [*version*] The $version of the artifact to obtain, defaults to LATEST
+# [*extension*] The $extension of the artifact to get
+# [*nexus*] The $nexus instance to obtain the artifact from
+# [*repo*] The $repo on the nexus instance to obtain the artifact from
 #
 # === Authors
 #
-#   Christopher Johnson - cjohn@ceh.ac.uk
+# - Christopher Johnson - cjohn@ceh.ac.uk
 #
 define nexus::artifact(
   $group,

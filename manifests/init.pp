@@ -4,7 +4,7 @@
 #
 # === Authors
 #
-#   Christopher Johnson - cjohn@ceh.ac.uk
+# - Christopher Johnson - cjohn@ceh.ac.uk
 #
 class nexus () {
 

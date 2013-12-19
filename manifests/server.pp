@@ -4,18 +4,14 @@
 #
 # === Parameters
 #
-# [*port*]
-#   The $port to host nexus on
-# [*nexus*]
-#   The $nexus repository to obtain the nexus artifact from
-# [*version*]
-#   The $version of nexus to deploy
-# [*repo*]
-#   The $repo to obtain the nexus artifact from
+# [*port*] The $port to host nexus on
+# [*nexus*] The $nexus repository to obtain the nexus artifact from
+# [*version*] The $version of nexus to deploy
+# [*repo*] The $repo to obtain the nexus artifact from
 #
 # === Authors
 #
-#   Christopher Johnson - cjohn@ceh.ac.uk
+# - Christopher Johnson - cjohn@ceh.ac.uk
 #
 class nexus::server (
   $port     = 80,
