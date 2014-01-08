@@ -24,7 +24,7 @@ define nexus::artifact(
   $location   = $title,
   $version    = 'LATEST',
   $extension  = 'war',
-  $nexus      = 'http://mavenrepo.nerc-lancaster.ac.uk/nexus/service/local',
+  $nexus      = 'http://nexus.nerc-lancaster.ac.uk/service/local',
   $repo       = 'public'
 ) {
   $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension)
