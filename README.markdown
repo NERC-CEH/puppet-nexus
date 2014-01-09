@@ -19,7 +19,7 @@ You can also obtain any arbitary maven artifact from a nexus instance
 
 ## Usage
 
-Create a new nexus instance from an artifact hosted in the default nexus instance. See [params](manifest/params.pp)
+Create a new nexus instance from an artifact hosted in the default nexus instance.
     
     include nexus::server
 
