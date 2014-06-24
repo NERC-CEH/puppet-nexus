@@ -12,6 +12,7 @@
 # [*location*] The $location to load the artifact to
 # [*version*] The $version of the artifact to obtain, defaults to LATEST
 # [*extension*] The $extension of the artifact to get
+# [*classifier*] The $classifier of the artifact to get
 # [*repo*] The $repo on the nexus instance to obtain the artifact from
 #
 # === Authors
@@ -25,9 +26,10 @@ define nexus::artifact(
   $location   = $title,
   $version    = 'LATEST',
   $extension  = 'war',
+  $classifier = '',
   $repo       = 'public'
 ) {
-  $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension)
+  $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension, $classifier)
   $temp = "/tmp/${webArtifact['sha1']}"
 
   exec { "obtain_artifact $location":
