@@ -23,7 +23,7 @@ describe 'nexus::artifact', :type => :define do
       :creates => expectedPath,
       :path    => '/usr/bin'
     ) }
-    it { should contain_file('/some/path.jar').with( :source => expectedPath )
-                                              .that_requires( 'Exec[obtain_artifact /some/path.jar]' ) }
+    it { should contain_file('/some/path.jar').with( :source => expectedPath ) }
+    it { should contain_file('/some/path.jar').that_requires( 'Exec[obtain_artifact /some/path.jar]' ) }
   end
 end
