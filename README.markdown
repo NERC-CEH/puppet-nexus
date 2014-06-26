@@ -1,5 +1,5 @@
 # Nexus
-
+[![Build Status](https://travis-ci.org/NERC-CEH/puppet-nexus.svg?branch=master)](https://travis-ci.org/NERC-CEH/puppet-nexus)
 ## Overview
 
 This is the nexus module. It enables us to obtain maven artifacts from nexus instances
