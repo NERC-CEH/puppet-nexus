@@ -33,7 +33,7 @@ define nexus::artifact(
   $temp = "/tmp/${webArtifact['sha1']}"
 
   exec { "obtain_artifact $location":
-    command   => "wget ${webArtifact['location']} -O ${temp}",
+    command   => "wget '${webArtifact['location']}' -O ${temp}",
     creates   => $temp,
     path      => ['/usr/bin'],
   }
