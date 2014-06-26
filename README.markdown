@@ -18,6 +18,7 @@ You can obtain any arbitary maven artifact from a nexus instance
 
 Obtain the latest maven artifact from nexus
 
+    include nexus
     nexus::artifact {
         group    => 'any.old.group',
         artifact => 'uberduber-webapp',
