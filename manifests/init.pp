@@ -18,6 +18,6 @@ class nexus (
   $version    = 'LATEST',
   $extension  = 'war',
   $classifier = '',
-  $nexus      = 'https://oss.sonatype.org/service/local'
+  $nexus      = 'https://oss.sonatype.org/service/local',
   $repo       = 'public'
 ) {}
