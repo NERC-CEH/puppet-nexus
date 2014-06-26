@@ -33,11 +33,12 @@ define nexus::artifact(
     fail('You must include the nexus base class before declaring any nexus artifacts resources')
   }
 
-  $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension, $classifier)
-  $temp = "/tmp/${webArtifact['sha1']}"
+  $sha1 = resolve_sha1($nexus, $repo, $group, $artifact, $version, $extension, $classifier)
+  $webArtifact = "${nexus}/artifact/maven/redirect?r=${repo}&v=${version}&g=${group}&a=${artifact}&e=${extension}&c=${classifier}"
+  $temp = "/tmp/${sha1}"
 
   exec { "obtain_artifact $location":
-    command   => "wget '${webArtifact['location']}' -O ${temp}",
+    command   => "wget '${webArtifact}' -O ${temp}",
     creates   => $temp,
     path      => ['/usr/bin'],
   }
