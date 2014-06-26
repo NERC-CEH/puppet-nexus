@@ -6,13 +6,13 @@
 #
 # === Parameters
 #
-# [*nexus*] The $nexus instance to obtain the artifact from
 # [*group*] The $group parameter of the artifact
 # [*artifact*] The $artifact to obtain
 # [*location*] The $location to load the artifact to
 # [*version*] The $version of the artifact to obtain, defaults to LATEST
 # [*extension*] The $extension of the artifact to get
 # [*classifier*] The $classifier of the artifact to get
+# [*nexus*] The $nexus instance to obtain the artifact from
 # [*repo*] The $repo on the nexus instance to obtain the artifact from
 #
 # === Authors
@@ -20,15 +20,19 @@
 # - Christopher Johnson - cjohn@ceh.ac.uk
 #
 define nexus::artifact(
-  $nexus,
   $group,
   $artifact,
   $location   = $title,
-  $version    = 'LATEST',
-  $extension  = 'war',
-  $classifier = '',
-  $repo       = 'public'
+  $version    = $nexus::version,
+  $extension  = $nexus::extension,
+  $classifier = $nexus::classifier,
+  $nexus      = $nexus::nexus,
+  $repo       = $nexus::repo
 ) {
+  if ! defined(Class['nexus']) {
+    fail('You must include the nexus base class before declaring any nexus artifacts resources')
+  }
+
   $webArtifact = resolve($nexus, $repo, $group, $artifact, $version, $extension, $classifier)
   $temp = "/tmp/${webArtifact['sha1']}"
 
