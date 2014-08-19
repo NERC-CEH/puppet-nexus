@@ -19,9 +19,9 @@ describe 'nexus::artifact', :type => :define do
       :location  => '/some/path.jar'
     }}
     it { should contain_exec('obtain_artifact /some/path.jar').with(
-      :command => "wget '#{nexusServer}/maven/redirect?r=public&v=1.0&g=uk.ac.ceh&a=dynamo-mapping&e=jar&c=' -O #{expectedPath}",
+      :command => "wget '#{nexusServer}/maven/redirect?r=public&v=1.0&g=uk.ac.ceh&a=dynamo-mapping&e=jar&c=' -O #{expectedPath} || rm -f #{expectedPath}",
       :creates => expectedPath,
-      :path    => '/usr/bin'
+      :path    => '/bin:/usr/bin'
     ) }
     it { should contain_file('/some/path.jar').with( :source => expectedPath )
                                               .that_requires( 'Exec[obtain_artifact /some/path.jar]' ) }

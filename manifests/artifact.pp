@@ -37,10 +37,11 @@ define nexus::artifact(
   $webArtifact = "${nexus}/artifact/maven/redirect?r=${repo}&v=${version}&g=${group}&a=${artifact}&e=${extension}&c=${classifier}"
   $temp = "/tmp/${sha1}"
 
+  # Try to get the artifact using wget. If it fails, delete the resultant output
   exec { "obtain_artifact $location":
-    command   => "wget '${webArtifact}' -O ${temp}",
+    command   => "wget '${webArtifact}' -O ${temp} || rm -f ${temp}",
     creates   => $temp,
-    path      => ['/usr/bin'],
+    path      => '/bin:/usr/bin',
   }
 
   file { $location :
