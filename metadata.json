@@ -1,0 +1,16 @@
+{
+  "name": "puppet-nexus",
+  "version": "0.1.0",
+  "summary": "Obtain artifacts from a Sonatype Nexus repository",
+  "author": "CEH App Dev",
+  "operatingsystem_support": [
+  	{"operatingsystem": "Ubuntu", "operatingsystemrelease": ["12.04", "14.04"]}
+  ],
+  "project_page": "https://github.com/NERC-CEH/puppet-nexus",
+  "source": "git@github.com:NERC-CEH/puppet-nexus.git",
+  "license": "GPLv2.0",
+  "requirements": [
+  	{"name": "puppet", "version_requirement": "3.x"}
+  ],
+  "dependencies": []
+}
