@@ -1,6 +1,6 @@
 # == Define: nexus::artifact
 #
-# Use this resource to obtain an artifact from a nexus repository. You can 
+# Use this resource to obtain an artifact from a nexus repository. You can
 # use nexus version tags such as 'LATEST', to ensure that you get the latest
 # release of an artifact
 #
@@ -45,6 +45,7 @@ define nexus::artifact(
   }
 
   file { $location :
+    backup  => false,
     source  => $temp,
     require => Exec["obtain_artifact $location"],
   }
