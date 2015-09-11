@@ -1,0 +1,18 @@
+{
+  "name": "ceh-nexus",
+  "version": "1.1.0",
+  "author": "Centre for Ecology & Hydrology",
+  "license": "GPL-2.0",
+  "summary": "This is the nexus module. It enables us to obtain maven artifacts from nexus instances",
+  "source": "https://github.com/NERC-CEH/puppet-nexus",
+  "project_page": "https://forge.puppetlabs.com/ceh/nexus",
+  "issues_url": "https://github.com/NERC-CEH/puppet-nexus/issues",
+  "tags": ["nexus", "oss sonatype", "maven"],
+  "operatingsystem_support": [
+    {
+    "operatingsystem": "Ubuntu",
+    "operatingsystemrelease": [ "14.04" ]
+    }
+   ],
+  "dependencies": []
+}
